@@ -2,6 +2,8 @@
 package David;
 
 import java.util.ArrayList;
+import Usuario.Cliente;
+
 public class CarritoCompra {
     
     //Atributos

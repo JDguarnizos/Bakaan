@@ -1,6 +1,6 @@
 
 package David;
-
+import Usuario.Campesino;
 
 public class Producto {
     // Atributos

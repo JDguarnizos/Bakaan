@@ -1,6 +1,8 @@
 package Nicolas;
 
 import java.util.List;
+import David.Producto; //Temporal, quitar cuando sea necesario
+import Usuario.Cliente;
 
 public class Pedido {
     // atributos
@@ -50,8 +52,8 @@ public class Pedido {
     // mtodo calcular total 
       public double calcularTotal() {
         double suma = 0.0;
-        for (Pedido producto : listaProductos) {
-            suma += producto.getPrecio();
+        for (Producto p : listaProductos) {
+            suma += p.getPrecio();
         }
         return suma;
     }
@@ -61,8 +63,8 @@ public class Pedido {
         System.out.println("Cliente: " + cliente.getNombre());
         System.out.println("Estado: " + estado);
         System.out.println("Productos:");
-        for (Pedido producto : listaProductos) {
-            System.out.println(" - " + producto.getNombre() + ": $" + producto.getPrecio());
+        for (Producto p : listaProductos) {
+            System.out.println(" - " + p.getNombre() + ": $" + p.getPrecio());
         }
         System.out.println("Total: $" + total);
     }
