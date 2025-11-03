@@ -1,6 +1,6 @@
 
 package David;
-import Usuario.Campesino;
+import Usuario.Campesino;//Necesario para usar campesino
 
 public class Producto {
     // Atributos
@@ -115,7 +115,7 @@ public class Producto {
         System.out.println("Precio: $"+precio);
         System.out.println("Cantidad disponible: " + cantidadDisponible);
         System.out.println("Descrición: "+descripcion);
-        System.out.println("Campesino: "+campesinoPropetiario.getNombre());
+        System.out.println("Campesino: "+campesinoPropietario.getNombre());
         
     }
 }
