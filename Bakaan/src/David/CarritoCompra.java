@@ -14,7 +14,7 @@ public class CarritoCompra {
     //Constructor
     public CarritoCompra(Cliente cliente){
         this.cliente = cliente;
-        this.productos = new ArrayList<>();
+        this.productos = new ArrayList<>();//Lista productos
         this.cantidades = new ArrayList<>();
     }
     
