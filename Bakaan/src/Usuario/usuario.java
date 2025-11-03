@@ -60,8 +60,12 @@ public abstract class usuario {
     
     //Metodos abstractos(por el momento)
     
-    public abstract void iniciarSesion();
-    public abstract void cerrarSesion();
+    public  void iniciarSesion(){
+        // No pueden ser abstracto
+    }
+    public void cerrarSesion(){
+        // No puede ser abstracto
+    }
     public abstract void mostrarPerfil();
     
     
