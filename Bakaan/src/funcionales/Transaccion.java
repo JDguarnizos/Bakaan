@@ -1,5 +1,5 @@
 
-package Nicolas;
+package funcionales;
 
 import java.time.LocalDateTime;
 

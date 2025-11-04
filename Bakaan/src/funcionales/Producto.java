@@ -1,5 +1,5 @@
 
-package David;
+package funcionales;
 import Usuario.Campesino;//Necesario para usar campesino
 
 public class Producto {

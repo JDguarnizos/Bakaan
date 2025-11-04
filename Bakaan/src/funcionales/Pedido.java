@@ -1,7 +1,6 @@
-package Nicolas;
+package funcionales;
 
 import java.util.List;
-import David.Producto; //Temporal, quitar cuando sea necesario
 import Usuario.Cliente;
 
 public class Pedido {

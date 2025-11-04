@@ -1,5 +1,5 @@
 
-package David;
+package funcionales;
 
 import java.util.ArrayList;
 import Usuario.Cliente;
