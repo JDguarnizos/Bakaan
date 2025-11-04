@@ -1,7 +1,7 @@
 
 package Usuario;
 
-public abstract class usuario {
+public abstract class Usuario {
     //Atributos
     protected String idUsuario;
     protected String nombre;
@@ -10,7 +10,7 @@ public abstract class usuario {
     protected String tipoUsuario;
     
     //Constructor de la SuperClase
-    public usuario(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario) {
+    public Usuario(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.correo = correo;

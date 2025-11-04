@@ -4,7 +4,7 @@ package Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente extends usuario{
+public class Cliente extends Usuario{
     //Atributos cliente
   private String direccionEntrega;
   public List<String>historialCompras;

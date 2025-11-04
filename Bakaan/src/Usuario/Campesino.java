@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import interfaces.Vendible;
 
-public class Campesino extends usuario, Vendible {
+public class Campesino extends Usuario implements Vendible{
     private String ubicacion;
     public List<String>productos;
     
