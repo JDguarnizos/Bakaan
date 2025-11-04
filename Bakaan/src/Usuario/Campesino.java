@@ -3,8 +3,9 @@ package Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import interfaces.Vendible;
 
-public class Campesino extends usuario{
+public class Campesino extends usuario, Vendible {
     private String ubicacion;
     public List<String>productos;
     
@@ -60,6 +61,18 @@ public class Campesino extends usuario{
         // pendiente por realizar
     }
     
-       
-    
+    @Override
+    public void publicarProducto() {
+        // pendiente por realizar
+    }
+
+    @Override
+    public void editarProducto() {
+        // pendiente por realizar
+    }
+
+    @Override
+    public void eliminarProducto() {
+        // pendiente por realizar
+    }
 }
