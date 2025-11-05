@@ -1,9 +1,5 @@
 package interfaces;
 
-/**
- *
- * @author Jdguarnizos (También como El_Sanster)
- */
 public interface Autenticable {
     //Método para Iniciar sesión y cerrar sesión para las clases derivadas de usuario
     //Por ahora serán void hasta que requiera un dato de regreso

@@ -1,9 +1,5 @@
 package interfaces;
 
-/**
- *
- * @author Jdguarnizos (También como El_Sanster)
- */
 public interface Vendible {
     //Métodos para los usuarios de tipo campesino
     //Por ahora serán de tipo void hasta que requiera algún dato de regreso
