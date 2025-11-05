@@ -1,5 +1,6 @@
 
 package funcionales;
+import java.util.ArrayList;
 import usuarios.Campesino;//Necesario para usar campesino
 
 public class Producto {
@@ -11,6 +12,8 @@ public class Producto {
     private int cantidadDisponible;
     private int cantidadVendidas = 0;
     private String descripcion;
+    private ArrayList<Integer> calificaciones = new ArrayList<>();
+    
     
     //Asociacion 
     private Campesino campesinoPropietario;
@@ -26,6 +29,29 @@ public class Producto {
         this.descripcion = descripcion;
         this.campesinoPropietario = campesinoPropietario;
     }
+    
+    //Metodo para agregar una calificacion
+    
+    public void agregarCalificacion(int calificacion){
+        if (calificacion >= 1 && calificacion <= 5) {
+            calificaciones.add(calificacion);
+            System.out.println("Calificación registrada con exito para el producto: " + nombre);
+        } else{
+            System.out.println("Intente de nuevo. La calificación debe de estar en un rango de 1 - 5.");
+        }
+    }
+    
+    //Metodo para obtener el promedio de calificaciones
+
+    public double getPromedioCalificacion(){
+        if (calificaciones.isEmpty()) return 0;
+        double suma = 0;
+        for (int c : calificaciones){
+            suma += c;
+        }
+        return suma / calificaciones.size();
+    }
+    
     
     //Getters and Setters
 
