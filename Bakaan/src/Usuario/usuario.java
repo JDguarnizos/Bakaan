@@ -1,13 +1,15 @@
 
 package Usuario;
+import interfaces.Autenticable;
 
-public abstract class Usuario {
+public abstract class Usuario implements Autenticable {
     //Atributos
     protected String idUsuario;
     protected String nombre;
     protected String correo;
     protected String contraseña;
     protected String tipoUsuario;
+    protected boolean sesionActiva;
     
     //Constructor de la SuperClase
     public Usuario(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario) {
@@ -16,6 +18,7 @@ public abstract class Usuario {
         this.correo = correo;
         this.contraseña = contraseña;
         this.tipoUsuario = tipoUsuario;
+        this.sesionActiva = false;
     }
 
     public String getIdUsuario() {
@@ -58,17 +61,35 @@ public abstract class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
     
-    //Metodos abstractos(por el momento)
-    
-    public  void iniciarSesion(){
-        // No pueden ser abstracto
+    //Metodos implementados de la interfaz autenticable
+    @Override
+    public boolean login(String correo, String Contraseña) {
+        
+        if( this.correo.equals(correo) && this.contraseña.equals(contraseña)){
+            sesionActiva = true;
+            //Mensaje de que ha ingresado de manera exitosa
+            return true;
+        }else{
+            //Mensaje de que las credenciales ingresadas son incorrectas
+            return false;
+        }
+    }
+    @Override
+    public void logout() {
+        if(sesionActiva){
+            sesionActiva = false;
+            //Mensaje de que la sesion se ha cerrado con exito
+        }else{
+            //Mensaje de que no hay sesion activa para cerrar
+        }
+    }
+    //Metodos 
+    public  void iniciarSesion(String correo, String Contraseña){
+        login(correo, Contraseña);
     }
     public void cerrarSesion(){
-        // No puede ser abstracto
+        logout();
     }
     public abstract void mostrarPerfil();
-    
-    
-    
-    
+ 
 }
