@@ -2,7 +2,7 @@
 package funcionales;
 
 import java.util.ArrayList;
-import Usuario.Cliente;
+import usuarios.Cliente;
 
 public class CarritoCompra {
     

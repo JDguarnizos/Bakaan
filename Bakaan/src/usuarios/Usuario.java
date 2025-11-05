@@ -1,5 +1,5 @@
 
-package Usuario;
+package usuarios;
 import interfaces.Autenticable;
 
 public abstract class Usuario implements Autenticable {

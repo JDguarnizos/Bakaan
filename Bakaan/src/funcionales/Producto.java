@@ -1,6 +1,6 @@
 
 package funcionales;
-import Usuario.Campesino;//Necesario para usar campesino
+import usuarios.Campesino;//Necesario para usar campesino
 
 public class Producto {
     // Atributos
@@ -9,6 +9,7 @@ public class Producto {
     private String categoria;
     private double precio;
     private int cantidadDisponible;
+    private int cantidadVendidas = 0;
     private String descripcion;
     
     //Asociacion 
@@ -79,6 +80,14 @@ public class Producto {
         }
     }
 
+    public int getCantidadVendidas() {
+        return cantidadVendidas;
+    }
+
+    public void setCantidadVendidas(int cantidadVendidas) {
+        this.cantidadVendidas = cantidadVendidas;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -114,8 +123,7 @@ public class Producto {
         System.out.println("Categoria: "+categoria);
         System.out.println("Precio: $"+precio);
         System.out.println("Cantidad disponible: " + cantidadDisponible);
-        System.out.println("Descrición: "+descripcion);
-        System.out.println("Campesino: "+campesinoPropietario.getNombre());
-        
+        System.out.println("Descripción: "+descripcion);
+        System.out.println("Campesino: "+campesinoPropietario.getNombre());   
     }
 }

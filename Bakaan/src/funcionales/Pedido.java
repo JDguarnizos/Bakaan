@@ -1,7 +1,7 @@
 package funcionales;
 
 import java.util.List;
-import Usuario.Cliente;
+import usuarios.Cliente;
 
 public class Pedido {
     // atributos
