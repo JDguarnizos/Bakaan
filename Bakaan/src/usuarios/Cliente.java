@@ -1,6 +1,8 @@
 
 package usuarios;
 
+import funcionales.CarritoCompra;
+import funcionales.Producto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +10,18 @@ public class Cliente extends Usuario{
     //Atributos cliente
   private String direccionEntrega;
   public List<String>historialCompras;
+  private List<Integer> calificaciones;
+  private CarritoCompra carrito;
   
   //Constructor de cliente
   public Cliente(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario, String direccionEntrega){
      super (idUsuario, nombre, correo, contraseña, tipoUsuario);
      this.direccionEntrega = direccionEntrega;
      this.historialCompras= new ArrayList<>();
+     this.calificaciones = new ArrayList<>();
+     this.carrito = new CarritoCompra(this);
  }   
+  
  //Getters y setters 
 
     public String getDireccionEntrega() {
@@ -32,22 +39,50 @@ public class Cliente extends Usuario{
     public void setHistorialCompras(List<String> historialCompras) {
         this.historialCompras = historialCompras;
     }
-  //Metodos de cliente
+
+    public List<Integer> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public CarritoCompra getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(CarritoCompra carrito) {
+        this.carrito = carrito;
+    }
     
+    
+  //Metodos de cliente
+    //Agrega el producto a la lista historial de compras
     public void realizarCompra(String producto){
-        //Agrega el producto a la lista historial de compras
         historialCompras.add(producto);
     }
-    public void calificarProducto(){
-        //Pendiente a realizar
-    }
+    
+    public void calificarProducto(Producto producto, int calificacion){
+        if (calificacion < 1 || calificacion > 5 ) {
+            System.out.println("La calificación debe estar en un rango de 1 - 5.");
+            return;
+        }
+        producto.agregarCalificacion(calificacion);
+        System.out.println("Has calificado el producto " +producto.getNombre() + " con " + calificacion + "estrellas.");
+        }
+        
+    
     public void verCarrito(){
-        //Pendiente a realizar
+        System.out.println("Carrito de compras de: "+getNombre());
+        carrito.mostrarCarrito();
     }
+    
     // Metodo abstracto de la super clase usuario
     @Override
     public void mostrarPerfil() {
-        // pendiente por realizar
+         System.out.println("\t PERFIL CLIENTE");
+         System.out.println("ID usuario: " +getIdUsuario());
+         System.out.println("Nombre: " +getNombre());
+         System.out.println("Correo: "+getCorreo());
+         System.out.println("Tipo de usuario: "+getTipoUsuario());
+         System.out.println("Dirección de entrega: "+direccionEntrega);
     }
   
 }

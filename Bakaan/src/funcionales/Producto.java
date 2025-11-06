@@ -30,29 +30,6 @@ public class Producto {
         this.campesinoPropietario = campesinoPropietario;
     }
     
-    //Metodo para agregar una calificacion
-    
-    public void agregarCalificacion(int calificacion){
-        if (calificacion >= 1 && calificacion <= 5) {
-            calificaciones.add(calificacion);
-            System.out.println("Calificación registrada con exito para el producto: " + nombre);
-        } else{
-            System.out.println("Intente de nuevo. La calificación debe de estar en un rango de 1 - 5.");
-        }
-    }
-    
-    //Metodo para obtener el promedio de calificaciones
-
-    public double getPromedioCalificacion(){
-        if (calificaciones.isEmpty()) return 0;
-        double suma = 0;
-        for (int c : calificaciones){
-            suma += c;
-        }
-        return suma / calificaciones.size();
-    }
-    
-    
     //Getters and Setters
 
     public int getIdProducto() {
@@ -141,6 +118,29 @@ public class Producto {
         }
     }
     
+    //Metodo para agregar una calificacion
+    
+    public void agregarCalificacion(int calificacion){
+        if (calificacion >= 1 && calificacion <= 5) {
+            calificaciones.add(calificacion);
+            System.out.println("Calificación registrada con exito para el producto: " + nombre);
+        } else{
+            System.out.println("Error. La calificación debe de estar en un rango de 1 - 5.");
+        }
+    }
+    
+    
+    //Metodo para obtener el promedio de calificaciones
+
+    public double getPromedioCalificacion(){
+        if (calificaciones.isEmpty()) return 0;
+        double suma = 0;
+        for (int c : calificaciones){
+            suma += c;
+        }
+        return suma / calificaciones.size();
+    }
+    
     //Método información completa del producto
     public void mostrarInformacion(){
         System.out.println("\t PRODUCTO");
@@ -150,6 +150,7 @@ public class Producto {
         System.out.println("Precio: $"+precio);
         System.out.println("Cantidad disponible: " + cantidadDisponible);
         System.out.println("Descripción: "+descripcion);
-        System.out.println("Campesino: "+campesinoPropietario.getNombre());   
+        System.out.println("Campesino: "+campesinoPropietario.getNombre()); 
+        System.out.println("Promedio de calificación: "+getPromedioCalificacion());
     }
 }
