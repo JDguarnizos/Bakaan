@@ -38,14 +38,24 @@ public class Campesino extends Usuario implements Vendible {
     //Metodos de campesino
 
     public void añadirVenta(Producto p, int cantidad) {
-        double valorTotal = 0;
+        double valorProducto = p.getPrecio()+(((p.getPrecio()*(p.getImpuesto()/100))
+                +(p.getPrecio()*(p.getComision()/100)))),//Calcular valor total de producto con impuestos y comision
+                valorTotal = 0;
         for (int i = 0; i < cantidad; i++) {
-            //Si necesitamos código extra sobre costos y así podemos hacerlo acá
-            valorTotal += p.getPrecio();
+           valorTotal += valorProducto;
         }
-        String infoVenta = "Venta #: " + productos.size()
-                + "\nProducto: " + p.getNombre()
-                + "\n Cantidad Total de venta: " + valorTotal;
+        String infoVenta = "Venta #: " + ventas.size()
+                + "\nProducto: " + p.getNombre()+ "($"+p.getPrecio()+") x "+ cantidad
+                + "\n Comision: $"+(p.getPrecio()*(p.getComision()/100))
+                + "\n IVA: $"+ (p.getPrecio()*(p.getImpuesto()/100))
+                + "\n Cantidad Total: $" + valorTotal;
+        /*Ejemplo de salida
+        Venta #: 1
+        Producto: limpiapisos ($2000) x 2
+        Comisión: $50
+        IVA: $50
+        Cantidad Total: $4200
+        */
         ventas.add(infoVenta);
     }
 

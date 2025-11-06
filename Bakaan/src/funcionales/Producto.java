@@ -8,7 +8,7 @@ public class Producto {
     private int idProducto;
     private String nombre;
     private String categoria;
-    private double precio;
+    private double precio,impuesto,comision;
     private int cantidadDisponible;
     private int cantidadVendidas = 0;
     private String descripcion;
@@ -17,18 +17,22 @@ public class Producto {
     
     //Asociacion 
     private Campesino campesinoPropietario;
-    
-    //Constructor 
-    public Producto(int idProducto, String nombre, String categoria, double precio
-            , int cantidadDisponible, String descripcion, Campesino campesinoPropietario){
-        this.idProducto= idProducto;
+
+    public Producto(int idProducto, String nombre, String categoria,
+            double precio, double impuesto, double comision,
+            int cantidadDisponible, String descripcion, Campesino campesinoPropietario) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
+        this.impuesto = impuesto;
+        this.comision = comision;
         this.cantidadDisponible = cantidadDisponible;
         this.descripcion = descripcion;
         this.campesinoPropietario = campesinoPropietario;
     }
+    
+    
     
     //Metodo para agregar una calificacion
     
@@ -57,6 +61,30 @@ public class Producto {
 
     public int getIdProducto() {
         return idProducto;
+    }
+
+    public double getImpuesto() {
+        return impuesto;
+    }
+
+    public void setImpuesto(double impuesto) {
+        this.impuesto = impuesto;
+    }
+
+    public double getComision() {
+        return comision;
+    }
+
+    public void setComision(double comision) {
+        this.comision = comision;
+    }
+
+    public ArrayList<Integer> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(ArrayList<Integer> calificaciones) {
+        this.calificaciones = calificaciones;
     }
 
     public void setIdProducto(int idProducto) {
