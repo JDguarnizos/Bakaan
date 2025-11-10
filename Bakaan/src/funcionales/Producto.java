@@ -8,7 +8,7 @@ public class Producto {
     private int idProducto;
     private String nombre;
     private String categoria;
-    private double precio;
+    private double precio,impuesto,comision;
     private int cantidadDisponible;
     private int cantidadVendidas = 0;
     private String descripcion;
@@ -17,23 +17,77 @@ public class Producto {
     
     //Asociacion 
     private Campesino campesinoPropietario;
-    
-    //Constructor 
-    public Producto(int idProducto, String nombre, String categoria, double precio
-            , int cantidadDisponible, String descripcion, Campesino campesinoPropietario){
-        this.idProducto= idProducto;
+
+    public Producto(int idProducto, String nombre, String categoria,
+            double precio, double impuesto, double comision,
+            int cantidadDisponible, String descripcion, Campesino campesinoPropietario) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
+        this.impuesto = impuesto;
+        this.comision = comision;
         this.cantidadDisponible = cantidadDisponible;
         this.descripcion = descripcion;
         this.campesinoPropietario = campesinoPropietario;
     }
     
+<<<<<<< HEAD
+=======
+    
+    
+    //Metodo para agregar una calificacion
+    
+    public void agregarCalificacion(int calificacion){
+        if (calificacion >= 1 && calificacion <= 5) {
+            calificaciones.add(calificacion);
+            System.out.println("Calificación registrada con exito para el producto: " + nombre);
+        } else{
+            System.out.println("Intente de nuevo. La calificación debe de estar en un rango de 1 - 5.");
+        }
+    }
+    
+    //Metodo para obtener el promedio de calificaciones
+
+    public double getPromedioCalificacion(){
+        if (calificaciones.isEmpty()) return 0;
+        double suma = 0;
+        for (int c : calificaciones){
+            suma += c;
+        }
+        return suma / calificaciones.size();
+    }
+    
+    
+>>>>>>> c0855318ad17cbea5c3915bfb861c80c5cc6ec25
     //Getters and Setters
 
     public int getIdProducto() {
         return idProducto;
+    }
+
+    public double getImpuesto() {
+        return impuesto;
+    }
+
+    public void setImpuesto(double impuesto) {
+        this.impuesto = impuesto;
+    }
+
+    public double getComision() {
+        return comision;
+    }
+
+    public void setComision(double comision) {
+        this.comision = comision;
+    }
+
+    public ArrayList<Integer> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(ArrayList<Integer> calificaciones) {
+        this.calificaciones = calificaciones;
     }
 
     public void setIdProducto(int idProducto) {

@@ -1,10 +1,6 @@
-
 package Test;
 
 import funcionales.Pedido;
-import funcionales.Pedido;
-import funcionales.Transaccion;
-import funcionales.Producto;
 import funcionales.Producto;
 import funcionales.Transaccion;
 import usuarios.Cliente;
@@ -18,33 +14,37 @@ public class TestTransaccion {
 
         // 1. Crear el campesino propietario
         Campesino campesino = new Campesino(
-            "C001",
-            "Don José",
-            "donjose@correo.com",
-            "1234",
-            "Campesino",
-            "Boyacá"
+                "C001",
+                "Don José",
+                "donjose@correo.com",
+                "1234",
+                "Campesino",
+                "Boyacá"
         );
 
-        // 2. Crear productos usando tu constructor real
+        // 2. Crear productos usando constructor
         Producto p1 = new Producto(
-            1,
-            "Tomate Chonto",
-            "Verdura",
-            4500,
-            20,
-            "Tomates frescos cosechados hoy",
-            campesino
+                1,
+                "Tomate Chonto",
+                "Verdura",
+                4500,
+                0,
+                10.0,
+                20,
+                "Tomates frescos cosechados hoy",
+                campesino
         );
 
         Producto p2 = new Producto(
-            2,
-            "Papa Criolla",
-            "Tubérculo",
-            8000,
-            15,
-            "Papa criolla de excelente calidad",
-            campesino
+                2,
+                "Papa Criolla",
+                "Tubérculo",
+                8000,
+                0,
+                10.0,
+                15,
+                "Papa criolla de excelente calidad",
+                campesino
         );
 
         // 3. Agregar los productos a una lista
@@ -54,12 +54,12 @@ public class TestTransaccion {
 
         // 4. Crear un cliente real
         Cliente cliente = new Cliente(
-            "U001",
-            "Juan Pérez",
-            "juanperez@correo.com",
-            "abcd",
-            "Cliente",
-            "Calle 123 #45-67"
+                "U001",
+                "Juan Pérez",
+                "juanperez@correo.com",
+                "abcd",
+                "Cliente",
+                "Calle 123 #45-67"
         );
 
         // 5. Crear un pedido real
