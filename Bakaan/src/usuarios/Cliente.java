@@ -5,6 +5,7 @@ import funcionales.CarritoCompra;
 import funcionales.Producto;
 import java.util.ArrayList;
 import java.util.List;
+import funcionales.Transacciones;
 
 public class Cliente extends Usuario{
     //Atributos cliente
@@ -12,6 +13,7 @@ public class Cliente extends Usuario{
   public List<String>historialCompras;
   private List<Integer> calificaciones;
   private CarritoCompra carrito;
+  private Transacciones listaTransacciones;
   
   //Constructor de cliente
   public Cliente(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario, String direccionEntrega){
@@ -20,6 +22,7 @@ public class Cliente extends Usuario{
      this.historialCompras= new ArrayList<>();
      this.calificaciones = new ArrayList<>();
      this.carrito = new CarritoCompra(this);
+     this.listaTransacciones = new Transacciones();
  }   
   
  //Getters y setters 

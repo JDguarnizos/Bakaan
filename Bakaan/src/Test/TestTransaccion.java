@@ -2,18 +2,21 @@ package Test;
 
 import funcionales.Pedido;
 import funcionales.Producto;
-import funcionales.Transaccion;
+import funcionales.Transacciones;
+import funcionales.CarritoCompra;
 import usuarios.Cliente;
 import usuarios.Campesino;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestTransaccion {
-
+    static public ArrayList<Campesino> campesinosRegs = new ArrayList<>();
+    static public ArrayList<Cliente> clienteRegs = new ArrayList<>();
     public static void main(String[] args) {
-
+        
+        
         // 1. Crear el campesino propietario
-        Campesino campesino = new Campesino(
+        Campesino c1 = new Campesino(
                 "C001",
                 "Don José",
                 "donjose@correo.com",
@@ -21,7 +24,8 @@ public class TestTransaccion {
                 "Campesino",
                 "Boyacá"
         );
-
+        
+        campesinosRegs.add(c1);
         // 2. Crear productos usando constructor
         Producto p1 = new Producto(
                 1,
@@ -32,9 +36,9 @@ public class TestTransaccion {
                 10.0,
                 20,
                 "Tomates frescos cosechados hoy",
-                campesino
+                c1
         );
-
+        
         Producto p2 = new Producto(
                 2,
                 "Papa Criolla",
@@ -44,16 +48,15 @@ public class TestTransaccion {
                 10.0,
                 15,
                 "Papa criolla de excelente calidad",
-                campesino
+                c1
         );
 
-        // 3. Agregar los productos a una lista
-        List<Producto> productos = new ArrayList<>();
-        productos.add(p1);
-        productos.add(p2);
+        c1.publicarProducto(p1);
+        c1.publicarProducto(p2);
+        
 
         // 4. Crear un cliente real
-        Cliente cliente = new Cliente(
+        Cliente Cl1 = new Cliente(
                 "U001",
                 "Juan Pérez",
                 "juanperez@correo.com",
@@ -63,14 +66,12 @@ public class TestTransaccion {
         );
 
         // 5. Crear un pedido real
-        Pedido pedido = new Pedido();
-        pedido.setIdPedido(101);
-        pedido.setCliente(cliente);
-        pedido.setListaProductos(productos);
-        pedido.setEstado("PENDIENTE");
+        CarritoCompra pedido1 = new CarritoCompra(Cl1);
+        pedido1.agregarProducto(p2, 1);
+        pedido1.agregarProducto(p1, 1);
 
         // 6. Crear la transacción
-        Transaccion transaccion = new Transaccion(pedido, "Efectivo");
+        Transacciones transaccion = new Transacciones(pedido, "Efectivo");
 
         // 7. Probar métodos Pagable
         transaccion.procesarPago();

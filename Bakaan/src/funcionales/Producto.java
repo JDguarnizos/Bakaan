@@ -31,35 +31,7 @@ public class Producto {
         this.descripcion = descripcion;
         this.campesinoPropietario = campesinoPropietario;
     }
-    
-<<<<<<< HEAD
-=======
-    
-    
-    //Metodo para agregar una calificacion
-    
-    public void agregarCalificacion(int calificacion){
-        if (calificacion >= 1 && calificacion <= 5) {
-            calificaciones.add(calificacion);
-            System.out.println("Calificación registrada con exito para el producto: " + nombre);
-        } else{
-            System.out.println("Intente de nuevo. La calificación debe de estar en un rango de 1 - 5.");
-        }
-    }
-    
-    //Metodo para obtener el promedio de calificaciones
 
-    public double getPromedioCalificacion(){
-        if (calificaciones.isEmpty()) return 0;
-        double suma = 0;
-        for (int c : calificaciones){
-            suma += c;
-        }
-        return suma / calificaciones.size();
-    }
-    
-    
->>>>>>> c0855318ad17cbea5c3915bfb861c80c5cc6ec25
     //Getters and Setters
 
     public int getIdProducto() {

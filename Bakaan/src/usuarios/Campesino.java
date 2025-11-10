@@ -84,7 +84,8 @@ public class Campesino extends Usuario implements Vendible {
         productos.add(productoPublicar);
         // aqui podria ir un mensaje cuando se publica el producto
     }
-
+    
+    @Override
     public void editarProducto(Producto productoAntiguo, Producto productoNuevo) {
         //Si el producto esta registrado realizara el cambio
         if (productos.contains(productoAntiguo)) {

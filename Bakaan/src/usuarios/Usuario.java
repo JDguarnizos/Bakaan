@@ -7,7 +7,7 @@ public abstract class Usuario implements Autenticable {
     protected String idUsuario;
     protected String nombre;
     protected String correo;
-    protected String contraseña;
+    private String contraseña;
     protected String tipoUsuario;
     protected boolean sesionActiva;
     
@@ -64,7 +64,6 @@ public abstract class Usuario implements Autenticable {
     //Metodos implementados de la interfaz autenticable
     @Override
     public boolean login(String correo, String Contraseña) {
-        
         if( this.correo.equals(correo) && this.contraseña.equals(contraseña)){
             sesionActiva = true;
             //Mensaje de que ha ingresado de manera exitosa
