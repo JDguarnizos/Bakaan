@@ -109,7 +109,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         btnAgregarCarrito.setBackground(new java.awt.Color(249, 235, 199));
         btnAgregarCarrito.setForeground(new java.awt.Color(185, 148, 112));
-        btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Carrito 2.png"))); // NOI18N
+        btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Carrito 2.png"))); // NOI18N
         btnAgregarCarrito.setText("Añadir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
