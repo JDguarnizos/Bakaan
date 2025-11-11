@@ -65,14 +65,14 @@ public class TestTransaccion {
                 "Calle 123 #45-67"
         );
 
-        // 5. Añadir Productos a carrito de compra
+        // 5. Añadir Productos a carrito de compra del cliente
         CL1.getCarrito().agregarProducto(p2, 1);
         CL1.getCarrito().agregarProducto(p2, 1);
 
-        // 6. Crear el pedido con el método de pago
-        Pedido ped1 = new Pedido(CL1, CL1.getCarrito());
+        // 6. Crear el pedido
+        Pedido ped1 = new Pedido(CL1,CL1.getCarrito());//Pide el cliente
         
         //7. Pagar el pedido y registrarlo en la transaccion
-        CL1.getListaTransacciones().registrarCompra(ped1);
+        CL1.confirmarTransaccion(ped1,"Efectivo");
     }
 }

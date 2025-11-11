@@ -58,8 +58,8 @@ public class Cliente extends Usuario{
     
   //Metodos de cliente
     //Agrega el producto a la lista historial de compras
-    public void confirmarTransaccion(Pedido pedidonuevo){
-        listaTransacciones.registrarCompra(pedidonuevo);
+    public void confirmarTransaccion(Pedido pedidonuevo, String MetodoPago){
+        listaTransacciones.registrarCompra(pedidonuevo,MetodoPago);
     }
     
     public void calificarProducto(Producto producto, int calificacion){

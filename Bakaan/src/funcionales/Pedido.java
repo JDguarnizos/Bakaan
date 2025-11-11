@@ -82,7 +82,8 @@ public class Pedido implements Pagable{
         this.pagado = pagado;
     }
     @Override
-    public void procesarPago() {
+    public void procesarPago(String metodoPago) {
+        this.metodoPago = metodoPago;
         this.fechaDePago = LocalDateTime.now();
         this.pagado = true;
         this.listaProductos = carritoCompra;

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Transacciones {
     private ArrayList<Pedido> listaTransacciones = new ArrayList<>();
     
-    public void registrarCompra (Pedido pedido){
-        pedido.procesarPago();
+    public void registrarCompra (Pedido pedido, String metodoPago){
+        pedido.procesarPago(metodoPago);
         listaTransacciones.add(pedido);
         listaTransacciones.getLast().setIdPedido(listaTransacciones.size());
     }
