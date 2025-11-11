@@ -17,7 +17,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
         
 
     }
-        // ✅ Constructor usado cuando se llama desde el programa
+        //Constructor usado cuando se llama desde el programa
     public CatalagoProductosVista(List<Producto> listaProductos, CarritoCompraVista carritoVista) {
         this.listaProductos = listaProductos;
         this.carritoVista = carritoVista;
@@ -70,7 +70,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         if (productoSeleccionado != null) {
             carritoVista.agregarProducto(productoSeleccionado);
-            JOptionPane.showMessageDialog(this, "Producto añadido al carrito ✅");
+            JOptionPane.showMessageDialog(this, "Producto añadido al carrito.");
         }
     }  
     /**

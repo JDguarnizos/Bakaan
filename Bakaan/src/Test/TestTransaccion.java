@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import funcionales.Pedido;
 import funcionales.Producto;
