@@ -4,24 +4,84 @@
  */
 package grafica;
 
+import Test.SistemaBakaan;
 import funcionales.Producto;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import usuarios.Cliente;
 
 /**
  *
  * @author PC-PERSONAL
  */
 public class CarritoCompraVista extends javax.swing.JFrame {
+    private DefaultTableModel modeloTabla;
+    private usuarios.Cliente clienteActual;
 
     /**
      * Creates new form CarritoCompraVista
      */
     public CarritoCompraVista() {
         initComponents();
+        iniciarTabla();
+        SistemaBakaan sistema = SistemaBakaan.getInstance();
+        if (sistema.getUsuarioActual() instanceof Cliente) {
+            clienteActual = (Cliente) sistema.getUsuarioActual();
+        }
+    }
+    
+    private void iniciarTabla() {
+        modeloTabla = new DefaultTableModel(
+            new Object[]{"Producto", "Cantidad", "Precio Unitario", "Subtotal"}, 0
+        );
+        jTable1.setModel(modeloTabla);
     }
 
-    void agregarProducto(Producto productoSeleccionado) {
-        //Por añadir, usar el cliente actual que debió iniciar sesión para usar su carrito y realizar el correspondiente avance
+    public void agregarProducto(Producto producto) {
+        // Mostrar diálogo para seleccionar cantidad
+        String cantidadStr = JOptionPane.showInputDialog(this, 
+            "Ingrese la cantidad para " + producto.getNombre() + " (Disponible: " + producto.getCantidadDisponible() + "):");
+        
+        try {
+            int cantidad = Integer.parseInt(cantidadStr);
+            if (cantidad > 0 && cantidad <= producto.getCantidadDisponible()) {
+                if (clienteActual != null) {
+                    clienteActual.getCarrito().agregarProducto(producto, cantidad);
+                    actualizarTabla();
+                    JOptionPane.showMessageDialog(this, "Producto agregado al carrito!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Cantidad inválida", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+     private void actualizarTabla() {
+        if (clienteActual == null) return;
+        
+        modeloTabla.setRowCount(0);
+        double total = 0;
+        
+        for (int i = 0; i < clienteActual.getCarrito().getProductos().size(); i++) {
+            Producto p = clienteActual.getCarrito().getProductos().get(i);
+            int cantidad = clienteActual.getCarrito().getCantidades().get(i);
+            double subtotal = p.getPrecio() * cantidad;
+            total += subtotal;
+            
+            modeloTabla.addRow(new Object[]{
+                p.getNombre(),
+                cantidad,
+                "$" + p.getPrecio(),
+                "$" + subtotal
+            });
+        }
+        
+        // Actualizar total
+        modeloTabla.addRow(new Object[]{"TOTAL", "", "", "$" + total});
+    }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,31 +139,7 @@ public class CarritoCompraVista extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CarritoCompraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CarritoCompraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CarritoCompraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CarritoCompraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CarritoCompraVista().setVisible(true);

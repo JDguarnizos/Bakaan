@@ -15,8 +15,32 @@ public class menuCampesino extends javax.swing.JFrame {
      */
     public menuCampesino() {
         initComponents();
+        conectarBotones();
     }
+    
+    private void conectarBotones() {
+    jButton1.addActionListener(e -> abrirPublicarProducto());
+    jButton2.addActionListener(e -> abrirVerVentas());
+    jButton3.addActionListener(e -> abrirEditarProducto());
+}
 
+    private void abrirPublicarProducto() {
+    publicarProducto ventana = new publicarProducto();
+    ventana.setVisible(true);
+    this.dispose();
+}
+
+private void abrirVerVentas() {
+    verVentas ventana = new verVentas();
+    ventana.setVisible(true);
+    this.dispose();
+}
+
+private void abrirEditarProducto() {
+    editarProducto ventana = new editarProducto();
+    ventana.setVisible(true);
+    this.dispose();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

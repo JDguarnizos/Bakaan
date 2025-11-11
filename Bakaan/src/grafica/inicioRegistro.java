@@ -4,6 +4,9 @@
  */
 package grafica;
 
+import Test.SistemaBakaan;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ValentinaVeraLozano
@@ -128,7 +131,18 @@ public class inicioRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_IniciarSesionActionPerformed
-        
+       String correo = Field_Correo.getText();
+    String contraseña = new String(PwdField_Contrasena.getPassword());
+    
+    SistemaBakaan sistema = SistemaBakaan.getInstance();
+    
+    if (sistema.iniciarSesion(correo, contraseña)) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+        sistema.mostrarInterfazSegunTipoUsuario();
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_BTN_IniciarSesionActionPerformed
 
     /**
