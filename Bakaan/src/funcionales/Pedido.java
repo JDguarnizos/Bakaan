@@ -1,21 +1,39 @@
 package funcionales;
 
+import interfaces.Pagable;
 import java.util.List;
 import usuarios.Cliente;
+import java.time.LocalDateTime;
 
-public class Pedido {
+//Pedido se encarga de el paso final antes de realizar un pago
+//Usando un carrito de compras como lista de productos a comprar
+public class Pedido implements Pagable{
+
     // atributos
     private int idPedido;
     private Cliente cliente;
-    private List<Producto> listaProductos;
+    //Creería que el carrito de compra obtenido está directamente relacionado
+    //Con el carrito de compra del usuario, que se vacía cuando se hace una compra
+    //Entonces cuando se finaliza una compra, hace una copia del carrito
+    //Que se usa como lista productos y cuya información es accesible
+    private CarritoCompra carritoCompra,//Carrito con peligro de borrarse
+            listaProductos;//Carrito seguro y final
     private double total;
-    private String estado;
-    
+    private Boolean pagado;
+    private LocalDateTime fechaDePago;
+    private String metodoPago;
+
+    public Pedido(Cliente cliente, CarritoCompra carritoCompra) {
+        this.cliente = cliente;
+        this.carritoCompra = carritoCompra;
+        this.pagado = false;
+    }
+
     // set and getters 
     public int getIdPedido() {
         return idPedido;
     }
-    
+
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
     }
@@ -29,43 +47,66 @@ public class Pedido {
     }
 
     public List<Producto> getListaProductos() {
-        return listaProductos;
-    }
-
-    public void setListaProductos(List<Producto> listaProductos) {
-        this.listaProductos = listaProductos;
-        this.total = calcularTotal(); // recalcula total si cambia la lista
+        if (pagado) {
+            return listaProductos.getProductos();
+        } else {
+            return carritoCompra.getProductos();
+        }
     }
 
     public double getTotal() {
         return total;
     }
 
-    public String getEstado() {
-        return estado;
+    public Boolean getEstado() {
+        return pagado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public Boolean getPagado() {
+        return pagado;
     }
+
+    public void setPagado(Boolean pagado) {
+        this.pagado = pagado;
+    }
+
+    public String getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public void setEstado(Boolean pagado) {
+        this.pagado = pagado;
+    }
+    @Override
+    public void procesarPago() {
+        this.fechaDePago = LocalDateTime.now();
+        this.pagado = true;
+        this.listaProductos = carritoCompra;
+        this.carritoCompra.vaciarCarrito();
+    }
+
     // mtodo calcular total 
-      public double calcularTotal() {
+    public void calcularTotal() {
         double suma = 0.0;
-        for (Producto p : listaProductos) {
+        for (Producto p : carritoCompra.getProductos()) {
             suma += p.getPrecio();
         }
-        return suma;
+        total = suma;
     }
-      //metodo mostrar pedido
-      public void mostrarDetalle() {
+    //metodo mostrar pedido
+    @Override
+    public void generarRecibo() {
         System.out.println("Pedido #" + idPedido);
         System.out.println("Cliente: " + cliente.getNombre());
-        System.out.println("Estado: " + estado);
+        System.out.println("Pagado: " + pagado);
         System.out.println("Productos:");
-        for (Producto p : listaProductos) {
+        for (Producto p : carritoCompra.getProductos()) {
             System.out.println(" - " + p.getNombre() + ": $" + p.getPrecio());
         }
         System.out.println("Total: $" + total);
     }
-      
 }

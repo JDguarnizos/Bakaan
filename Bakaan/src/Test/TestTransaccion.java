@@ -56,7 +56,7 @@ public class TestTransaccion {
         
 
         // 4. Crear un cliente real
-        Cliente Cl1 = new Cliente(
+        Cliente CL1 = new Cliente(
                 "U001",
                 "Juan Pérez",
                 "juanperez@correo.com",
@@ -65,16 +65,14 @@ public class TestTransaccion {
                 "Calle 123 #45-67"
         );
 
-        // 5. Crear un pedido real
-        CarritoCompra pedido1 = new CarritoCompra(Cl1);
-        pedido1.agregarProducto(p2, 1);
-        pedido1.agregarProducto(p1, 1);
+        // 5. Añadir Productos a carrito de compra
+        CL1.getCarrito().agregarProducto(p2, 1);
+        CL1.getCarrito().agregarProducto(p2, 1);
 
-        // 6. Crear la transacción
-        Transacciones transaccion = new Transacciones(pedido, "Efectivo");
-
-        // 7. Probar métodos Pagable
-        transaccion.procesarPago();
-        transaccion.generarRecibo();
+        // 6. Crear el pedido con el método de pago
+        Pedido ped1 = new Pedido(CL1, CL1.getCarrito());
+        
+        //7. Pagar el pedido y registrarlo en la transaccion
+        CL1.getListaTransacciones().registrarCompra(ped1);
     }
 }

@@ -2,6 +2,7 @@
 package usuarios;
 
 import funcionales.CarritoCompra;
+import funcionales.Pedido;
 import funcionales.Producto;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import funcionales.Transacciones;
 public class Cliente extends Usuario{
     //Atributos cliente
   private String direccionEntrega;
-  public List<String>historialCompras;
   private List<Integer> calificaciones;
   private CarritoCompra carrito;
   private Transacciones listaTransacciones;
@@ -19,9 +19,8 @@ public class Cliente extends Usuario{
   public Cliente(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario, String direccionEntrega){
      super (idUsuario, nombre, correo, contraseña, tipoUsuario);
      this.direccionEntrega = direccionEntrega;
-     this.historialCompras= new ArrayList<>();
      this.calificaciones = new ArrayList<>();
-     this.carrito = new CarritoCompra(this);
+     this.carrito = new CarritoCompra();
      this.listaTransacciones = new Transacciones();
  }   
   
@@ -34,15 +33,7 @@ public class Cliente extends Usuario{
     public void setDireccionEntrega(String direccionEntrega) {
         this.direccionEntrega = direccionEntrega;
     }
-
-    public List<String> getHistorialCompras() {
-        return historialCompras;
-    }
-
-    public void setHistorialCompras(List<String> historialCompras) {
-        this.historialCompras = historialCompras;
-    }
-
+    
     public List<Integer> getCalificaciones() {
         return calificaciones;
     }
@@ -54,12 +45,21 @@ public class Cliente extends Usuario{
     public void setCarrito(CarritoCompra carrito) {
         this.carrito = carrito;
     }
+
+    public Transacciones getListaTransacciones() {
+        return listaTransacciones;
+    }
+
+    public void setListaTransacciones(Transacciones listaTransacciones) {
+        this.listaTransacciones = listaTransacciones;
+    }
+    
     
     
   //Metodos de cliente
     //Agrega el producto a la lista historial de compras
-    public void realizarCompra(String producto){
-        historialCompras.add(producto);
+    public void confirmarTransaccion(Pedido pedidonuevo){
+        listaTransacciones.registrarCompra(pedidonuevo);
     }
     
     public void calificarProducto(Producto producto, int calificacion){

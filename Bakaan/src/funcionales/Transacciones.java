@@ -1,37 +1,21 @@
 
 package funcionales;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+//Transacciones se encarga de recopilar los pedidos y permitir su acceso
+//Este debe estar inicializado dentro de cliente
 public class Transacciones {
-    private ArrayList<CarritoCompra> listaTransacciones = new ArrayList<>(); // Contador de IDs
-    private int idTransaccion;
-    private CarritoCompra compra;
-    private String metodoPago;
-    private LocalDateTime fecha;
+    private ArrayList<Pedido> listaTransacciones = new ArrayList<>();
     
-    // Constructor
+    public void registrarCompra (Pedido pedido){
+        pedido.procesarPago();
+        listaTransacciones.add(pedido);
+        listaTransacciones.getLast().setIdPedido(listaTransacciones.size());
+    }
+
+    public ArrayList<Pedido> getListaTransacciones() {
+        return listaTransacciones;
+    }
     
-    // set and getter 
-    
-    public int getIdTransaccion() {
-        return idTransaccion;
-    }
-
-    public String getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
 }

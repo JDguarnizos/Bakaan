@@ -4,16 +4,16 @@ package funcionales;
 import java.util.ArrayList;
 import usuarios.Cliente;
 
+//Recibe los productos que posiblemente sean comprados
+//También como lista de productos, se vacia una vez finalizada una compra
 public class CarritoCompra {
     
     //Atributos
-    private Cliente cliente;
     private ArrayList<Producto> productos; //Lista de productos agregados
     private ArrayList<Integer> cantidades; //Cantidad por cada producto
     
     //Constructor
-    public CarritoCompra(Cliente cliente){
-        this.cliente = cliente;
+    public CarritoCompra(){
         this.productos = new ArrayList<>();//Lista productos
         this.cantidades = new ArrayList<>();
     }
@@ -86,16 +86,7 @@ public class CarritoCompra {
         System.out.println("Total: $ "+calcularTotal());
     }
     
-    //Getter & Setters
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-    
+    //Getter & Setters    
     public ArrayList<Producto> getProductos(){
         return productos;
     }
