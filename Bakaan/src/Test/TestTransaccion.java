@@ -2,12 +2,9 @@ package test;
 
 import funcionales.Pedido;
 import funcionales.Producto;
-import funcionales.Transacciones;
-import funcionales.CarritoCompra;
 import usuarios.Cliente;
 import usuarios.Campesino;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TestTransaccion {
     static public ArrayList<Campesino> campesinosRegs = new ArrayList<>();
@@ -24,8 +21,8 @@ public class TestTransaccion {
                 "Campesino",
                 "Boyacá"
         );
-        
         campesinosRegs.add(c1);
+        
         // 2. Crear productos usando constructor
         Producto p1 = new Producto(
                 1,
