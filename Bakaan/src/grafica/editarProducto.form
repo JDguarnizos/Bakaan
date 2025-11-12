@@ -116,8 +116,10 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtDescripcion" min="-2" pref="191" max="-2" attributes="0"/>
                                               <Component id="txtNombre" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                                              <Component id="FTF_PrecioProducto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="FTF_CantidadProducto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="FTF_CantidadProducto" alignment="0" pref="120" max="32767" attributes="0"/>
+                                                  <Component id="FTF_PrecioProducto" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>

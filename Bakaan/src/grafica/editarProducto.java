@@ -2,6 +2,7 @@ package grafica;
 
 import funcionales.Producto;
 import javax.swing.JOptionPane;
+import test.SistemaBakaan;
 import usuarios.Campesino;
 
 /**
@@ -179,8 +180,9 @@ public class editarProducto extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(FTF_PrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(FTF_CantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(FTF_CantidadProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                                .addComponent(FTF_PrecioProducto, javax.swing.GroupLayout.Alignment.LEADING)))))))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -246,6 +248,11 @@ public class editarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_comboProductosActionPerformed
 
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
+        editarProducto editar = new editarProducto();
+         editar.setCampesino((Campesino) SistemaBakaan.getInstance().getUsuarioActual());
+         editar.setVisible(true);
+        
+        
         if (productoseleccionado != null) {
             productoseleccionado.setNombre(txtNombre.getText());
             productoseleccionado.setPrecio(Double.parseDouble(FTF_PrecioProducto.getText()));
