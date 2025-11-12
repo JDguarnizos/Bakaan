@@ -159,6 +159,11 @@ public class publicarProducto extends javax.swing.JFrame {
         FTF_Cantidad.setBackground(new java.awt.Color(255, 255, 255));
         FTF_Cantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         FTF_Cantidad.setText("100");
+        FTF_Cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FTF_CantidadActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -284,6 +289,7 @@ public class publicarProducto extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         double precio = Double.parseDouble(FTF_Precio.getText());
         int cantidad = Integer.parseInt(FTF_Cantidad.getText());
+        FTF_Cantidad.setEditable(true);
         String categoria = txtCategoria.getText().trim();
         String descripcion = TA_Descripcion.getText().trim();
         int comision = Integer.parseInt(FTF_Porcentaje.getText());//La comisión no es modificable en la interfaz, pero podemos cambiarla desde el diseño
@@ -315,6 +321,10 @@ public class publicarProducto extends javax.swing.JFrame {
           menu.setVisible(true);
              this.dispose();
     }//GEN-LAST:event_BTN_VolverActionPerformed
+
+    private void FTF_CantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FTF_CantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FTF_CantidadActionPerformed
 
     /**
      * @param args the command line arguments
