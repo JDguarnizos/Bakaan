@@ -66,10 +66,8 @@ public abstract class Usuario implements Autenticable {
     public boolean login(String correo, String Contraseña) {
         if( this.correo.equals(correo) && this.contraseña.equals(contraseña)){
             sesionActiva = true;
-            //Mensaje de que ha ingresado de manera exitosa
             return true;
         }else{
-            //Mensaje de que las credenciales ingresadas son incorrectas
             return false;
         }
     }
@@ -77,9 +75,7 @@ public abstract class Usuario implements Autenticable {
     public void logout() {
         if(sesionActiva){
             sesionActiva = false;
-            //Mensaje de que la sesion se ha cerrado con exito
-        }else{
-            //Mensaje de que no hay sesion activa para cerrar
+        }else{  
         }
     }
     //Metodos 

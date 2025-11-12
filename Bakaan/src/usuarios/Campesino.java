@@ -16,7 +16,8 @@ public class Campesino extends Usuario implements Vendible {
         super(idUsuario, nombre, correo, contraseña, tipoUsuario = "Campesino");
         this.ubicacion = ubicacion;
         this.productos = new ArrayList<>();
-
+        this.ventas = new ArrayList<>();
+   
     }
     //Getters y Setters
 
