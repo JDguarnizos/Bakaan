@@ -26,7 +26,7 @@ public class menuCampesino extends javax.swing.JFrame {
 }
 
     private void abrirPublicarProducto() {
-    publicarProducto ventana = new publicarProducto();
+    publicarProducto ventana = new publicarProducto(campesino);
     ventana.setVisible(true);
     this.dispose();
 }

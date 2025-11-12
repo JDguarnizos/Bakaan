@@ -49,8 +49,12 @@ public class inicioRegistro extends javax.swing.JFrame {
         LB_InicioSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LB_InicioSesion.setText("Iniciar Sesión");
 
+        Field_Correo.setBackground(new java.awt.Color(255, 255, 255));
+        Field_Correo.setForeground(new java.awt.Color(0, 0, 0));
         Field_Correo.setText("Ingresa tu correo");
 
+        PwdField_Contrasena.setBackground(new java.awt.Color(255, 255, 255));
+        PwdField_Contrasena.setForeground(new java.awt.Color(0, 0, 0));
         PwdField_Contrasena.setText("Contraseña");
 
         LB_Correo.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
