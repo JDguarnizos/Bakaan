@@ -4,6 +4,7 @@ import funcionales.Producto;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import usuarios.Campesino;
 
 public class CatalagoProductosVista extends javax.swing.JFrame {
 
@@ -28,10 +29,11 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     }
 
     private void iniciarTabla() {
-        modeloTabla = new DefaultTableModel(
-                new Object[]{"ID", "Nombre", "Categoría", "Precio", "Disponible"}, 0
-        );
-        TB_tablaProductos.setModel(modeloTabla);
+modeloTabla = new DefaultTableModel(
+    new Object[]{"Producto", "Descripción", "Campesino", "Valor", "Cantidad Disponible"}, 0
+);
+
+        tablaProductos.setModel(modeloTabla);
     }
 
     private void cargarProductos() {
@@ -44,39 +46,76 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         for (Producto p : listaProductos) {
             modeloTabla.addRow(new Object[]{
-                p.getIdProducto(),
+                
                 p.getNombre(),
-                p.getCategoria(),
+                p.getDescripcion(),
+                (p.getCampesinoPropietario()!= null)? p.getCampesinoPropietario().getNombre() : "Sin asignar",
                 p.getPrecio(),
                 p.getCantidadDisponible()
             });
         }
     }
 
-     private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-            int fila = TB_tablaProductos.getSelectedRow();
-    
-    if (fila == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione un producto primero");
+private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {
+    // 1. Verificar que la tabla exista
+    if (tablaProductos == null) {
+        JOptionPane.showMessageDialog(this, "La tabla no está inicializada.");
         return;
     }
-    
-    // Verificar que no sea la última fila (que podría ser un total)
-    if (fila >= listaProductos.size()) {
+
+    // 2. Obtener la fila seleccionada
+    int filaSeleccionada = tablaProductos.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un producto de la tabla.");
         return;
     }
-    
-    int idSeleccionado = (int) modeloTabla.getValueAt(fila, 0);
-    
-    Producto productoSeleccionado = listaProductos.stream()
-            .filter(p -> p.getIdProducto() == idSeleccionado)
-            .findFirst()
-            .orElse(null);
-    
-    if (productoSeleccionado != null && carritoVista != null) {
-        carritoVista.agregarProducto(productoSeleccionado);
+
+    // 3. Obtener los datos del producto desde la tabla
+    Producto productoSeleccionado = null;
+
+    try {
+        // Ajusta los índices según el orden de tus columnas en la tabla
+        int id = Integer.parseInt(tablaProductos.getValueAt(filaSeleccionada, 0).toString());
+        String nombre = tablaProductos.getValueAt(filaSeleccionada, 1).toString();
+        String categoria = tablaProductos.getValueAt(filaSeleccionada, 2).toString();
+        double precio = Double.parseDouble(tablaProductos.getValueAt(filaSeleccionada, 3).toString());
+        int cantidadDisponible = Integer.parseInt(tablaProductos.getValueAt(filaSeleccionada, 4).toString());
+        String descripcion = tablaProductos.getValueAt(filaSeleccionada, 5).toString();
+
+        // Campesino temporal (mientras no tengas los datos reales en la tabla)
+        Campesino propietario = new Campesino(
+            "CAMP001",                  // idUsuario
+            "Campesino Desconocido",    // nombre
+            "campesino@ejemplo.com",    // correo
+            "1234",                     // contraseña
+            "Campesino",                // tipoUsuario
+            "Ubicación no especificada" // ubicacion
+        );
+
+        // Crear el producto seleccionado
+        productoSeleccionado = new Producto(
+            id,
+            nombre,
+            categoria,
+            precio,
+            0.0,   // impuesto
+            0.0,   // comisión
+            cantidadDisponible,
+            descripcion,
+            propietario
+        );
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al obtener datos del producto: " + e.getMessage());
+        return;
     }
+
+    // 4. Crear y mostrar la ventana CarritoCompraAñadir
+    CarritoCompraAñadir ventanaCarrito = new CarritoCompraAñadir(productoSeleccionado);
+    ventanaCarrito.setLocationRelativeTo(this);
+    ventanaCarrito.setVisible(true);
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,7 +128,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         JScrPane_CatalogoProductos = new javax.swing.JScrollPane();
-        TB_tablaProductos = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
         btnAgregarCarrito = new javax.swing.JButton();
         TFLD_CuadroBusqueda = new javax.swing.JTextField();
         LB_Titulo = new javax.swing.JLabel();
@@ -100,8 +139,8 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(249, 235, 199));
 
-        TB_tablaProductos.setForeground(new java.awt.Color(185, 148, 112));
-        TB_tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setForeground(new java.awt.Color(185, 148, 112));
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -120,8 +159,8 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TB_tablaProductos.setSelectionBackground(new java.awt.Color(249, 235, 199));
-        JScrPane_CatalogoProductos.setViewportView(TB_tablaProductos);
+        tablaProductos.setSelectionBackground(new java.awt.Color(249, 235, 199));
+        JScrPane_CatalogoProductos.setViewportView(tablaProductos);
 
         btnAgregarCarrito.setBackground(new java.awt.Color(249, 235, 199));
         btnAgregarCarrito.setForeground(new java.awt.Color(185, 148, 112));
@@ -151,19 +190,15 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JScrPane_CatalogoProductos, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LB_Titulo)
+                            .addComponent(TFLD_CuadroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LB_Titulo)
-                                    .addComponent(TFLD_CuadroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(CB_SeleccionTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Buscar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(266, 266, 266)
+                                .addComponent(CB_SeleccionTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BTN_Buscar))
+                            .addComponent(JScrPane_CatalogoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,9 +248,9 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_SeleccionTipoBusqueda;
     private javax.swing.JScrollPane JScrPane_CatalogoProductos;
     private javax.swing.JLabel LB_Titulo;
-    private javax.swing.JTable TB_tablaProductos;
     private javax.swing.JTextField TFLD_CuadroBusqueda;
     private javax.swing.JButton btnAgregarCarrito;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

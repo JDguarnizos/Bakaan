@@ -1,22 +1,75 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package grafica;
 
-/**
- *
- * @author PC-PERSONAL
- */
+package grafica;
+import funcionales.Producto;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 public class CarritoCompraAñadir extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CarritoCompraAñadir
-     */
-    public CarritoCompraAñadir() {
+
+
+    static private Producto productoSeleccionado;
+    private double valorTotal = 0;
+
+    // Constructor que recibe el producto seleccionado desde el catálogo
+    public CarritoCompraAñadir(Producto producto) {
         initComponents();
+        this.productoSeleccionado = producto;
+        inicializarDatosProducto();
+        configurarEventos();
     }
 
+    // Inicializa la información del producto en la interfaz
+    private void inicializarDatosProducto() {
+        LB_NombreProducto.setText(productoSeleccionado.getNombre());
+        TA_DescripcionProducto.setText(productoSeleccionado.getDescripcion());
+        LB_ValorTotal.setText("0");
+        Slider_Cantidad.setMinimum(1);
+        Slider_Cantidad.setMaximum(productoSeleccionado.getCantidadDisponible());
+        Slider_Cantidad.setValue(1);
+    }
+
+    // Configura eventos para que el valor total cambie al mover el slider
+    private void configurarEventos() {
+        Slider_Cantidad.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int cantidad = Slider_Cantidad.getValue();
+                valorTotal = cantidad * productoSeleccionado.getPrecio();
+                LB_ValorTotal.setText(String.format("$ %.2f", valorTotal));
+            }
+        });
+
+        BTN_Cancelar.addActionListener(e -> dispose());
+
+        BTN_AgregarCarrito.addActionListener(e -> {
+            int cantidad = Slider_Cantidad.getValue();
+            if (cantidad > productoSeleccionado.getCantidadDisponible()) {
+                JOptionPane.showMessageDialog(
+                        CarritoCompraAñadir.this,
+                        "No hay suficiente cantidad disponible.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            JOptionPane.showMessageDialog(
+                    CarritoCompraAñadir.this,
+                    "Producto añadido al carrito:\n" +
+                    productoSeleccionado.getNombre() +
+                    "\nCantidad: " + cantidad +
+                    "\nTotal: $" + String.format("%.2f", valorTotal)
+            );
+
+            dispose();
+        });
+    }
+
+    /**
+     * Inicialización automática de los componentes (NetBeans GUI Builder).
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,7 +236,8 @@ public class CarritoCompraAñadir extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CarritoCompraAñadir().setVisible(true);
+    new CarritoCompraAñadir(productoSeleccionado).setVisible(true);
+
             }
         });
     }
