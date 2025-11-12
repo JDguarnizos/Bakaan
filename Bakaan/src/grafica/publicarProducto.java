@@ -14,6 +14,15 @@ public class publicarProducto extends javax.swing.JFrame {
         initComponents();
         this.campesino = campesino;
     }
+    public void limpiarCampos(){
+        txtNombre.setText("");
+        FTF_Precio.setText("");
+        FTF_Cantidad.setText("");
+        txtCategoria.setText("");
+        TA_Descripcion.setText("");
+        FTF_Porcentaje.setText("");
+        FTF_Impuesto.setText("");
+    }
     
     //Esta cosa no se toca ni loco
     @SuppressWarnings("unchecked")
@@ -102,11 +111,21 @@ public class publicarProducto extends javax.swing.JFrame {
         BTN_Limpiar.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
         BTN_Limpiar.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Limpiar.setText("Limpiar");
+        BTN_Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_LimpiarActionPerformed(evt);
+            }
+        });
 
         BTN_Volver.setBackground(new java.awt.Color(120, 61, 25));
         BTN_Volver.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
         BTN_Volver.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Volver.setText("Volver");
+        BTN_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VolverActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 51));
@@ -275,7 +294,8 @@ public class publicarProducto extends javax.swing.JFrame {
             //Si algún campo hace falta
             JOptionPane.showMessageDialog(this,"Porfavor completa todos los campos.", "Error",JOptionPane.ERROR_MESSAGE);
             return;
-        }        
+        }      
+        limpiarCampos();
         } catch(Exception NumberFormatException){
             //En caso que hayan letras en los campos númericos, cosa que no es posible por los JFormatTextField
             //Pero quien sabe
@@ -284,6 +304,17 @@ public class publicarProducto extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_BTN_PublicarActionPerformed
+
+    private void BTN_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_BTN_LimpiarActionPerformed
+
+    private void BTN_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VolverActionPerformed
+        menuCampesino menu = new menuCampesino();
+          menu.setCampesino(campesino);
+          menu.setVisible(true);
+             this.dispose();
+    }//GEN-LAST:event_BTN_VolverActionPerformed
 
     /**
      * @param args the command line arguments
