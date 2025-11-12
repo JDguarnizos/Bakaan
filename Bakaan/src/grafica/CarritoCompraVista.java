@@ -4,7 +4,7 @@
  */
 package grafica;
 
-import Test.SistemaBakaan;
+import test.SistemaBakaan;
 import funcionales.Producto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -95,10 +95,13 @@ public class CarritoCompraVista extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        BTN_AtrasCarrito = new javax.swing.JButton();
+        BTN_VaciarCarrito = new javax.swing.JButton();
+        BTN_PagarCarrito = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(254, 250, 224));
+        jPanel1.setBackground(new java.awt.Color(249, 235, 199));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,15 +114,36 @@ public class CarritoCompraVista extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        BTN_AtrasCarrito.setText("Atrás");
+
+        BTN_VaciarCarrito.setText("Vaciar Carrito");
+
+        BTN_PagarCarrito.setText("Ir a Pagar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_AtrasCarrito)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BTN_VaciarCarrito)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_PagarCarrito)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_AtrasCarrito)
+                    .addComponent(BTN_VaciarCarrito)
+                    .addComponent(BTN_PagarCarrito))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,6 +173,9 @@ public class CarritoCompraVista extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_AtrasCarrito;
+    private javax.swing.JButton BTN_PagarCarrito;
+    private javax.swing.JButton BTN_VaciarCarrito;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

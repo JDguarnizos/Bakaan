@@ -31,7 +31,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
         modeloTabla = new DefaultTableModel(
                 new Object[]{"ID", "Nombre", "Categoría", "Precio", "Disponible"}, 0
         );
-        tablaProductos.setModel(modeloTabla);
+        TB_tablaProductos.setModel(modeloTabla);
     }
 
     private void cargarProductos() {
@@ -54,7 +54,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     }
 
      private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-            int fila = tablaProductos.getSelectedRow();
+            int fila = TB_tablaProductos.getSelectedRow();
     
     if (fila == -1) {
         JOptionPane.showMessageDialog(this, "Seleccione un producto primero");
@@ -88,51 +88,96 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaProductos = new javax.swing.JTable();
+        JScrPane_CatalogoProductos = new javax.swing.JScrollPane();
+        TB_tablaProductos = new javax.swing.JTable();
         btnAgregarCarrito = new javax.swing.JButton();
+        TFLD_CuadroBusqueda = new javax.swing.JTextField();
+        LB_Titulo = new javax.swing.JLabel();
+        BTN_Buscar = new javax.swing.JButton();
+        CB_SeleccionTipoBusqueda = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setForeground(new java.awt.Color(249, 235, 199));
+        jPanel1.setBackground(new java.awt.Color(249, 235, 199));
 
-        tablaProductos.setBackground(new java.awt.Color(249, 235, 199));
-        tablaProductos.setForeground(new java.awt.Color(185, 148, 112));
-        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+        TB_tablaProductos.setForeground(new java.awt.Color(185, 148, 112));
+        TB_tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Producto", "Descripción", "Campesino", "Valor", "Cantidad Disponible"
             }
-        ));
-        tablaProductos.setSelectionBackground(new java.awt.Color(249, 235, 199));
-        jScrollPane1.setViewportView(tablaProductos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TB_tablaProductos.setSelectionBackground(new java.awt.Color(249, 235, 199));
+        JScrPane_CatalogoProductos.setViewportView(TB_tablaProductos);
 
         btnAgregarCarrito.setBackground(new java.awt.Color(249, 235, 199));
         btnAgregarCarrito.setForeground(new java.awt.Color(185, 148, 112));
         btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Carrito 2.png"))); // NOI18N
         btnAgregarCarrito.setText("Añadir");
 
+        TFLD_CuadroBusqueda.setText("Buscar");
+
+        LB_Titulo.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        LB_Titulo.setForeground(new java.awt.Color(51, 51, 51));
+        LB_Titulo.setText("Catálogo Productos");
+
+        BTN_Buscar.setText("Buscar");
+
+        CB_SeleccionTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opción", "Buscar por Producto", "Buscar por Descripción", "Buscar por Campesino" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(btnAgregarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnAgregarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JScrPane_CatalogoProductos, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LB_Titulo)
+                                    .addComponent(TFLD_CuadroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addComponent(CB_SeleccionTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_Buscar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(LB_Titulo)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TFLD_CuadroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Buscar)
+                    .addComponent(CB_SeleccionTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JScrPane_CatalogoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAgregarCarrito)
                 .addContainerGap())
         );
@@ -141,7 +186,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,9 +209,13 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Buscar;
+    private javax.swing.JComboBox<String> CB_SeleccionTipoBusqueda;
+    private javax.swing.JScrollPane JScrPane_CatalogoProductos;
+    private javax.swing.JLabel LB_Titulo;
+    private javax.swing.JTable TB_tablaProductos;
+    private javax.swing.JTextField TFLD_CuadroBusqueda;
     private javax.swing.JButton btnAgregarCarrito;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }
