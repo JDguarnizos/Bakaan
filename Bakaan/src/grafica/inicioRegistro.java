@@ -4,7 +4,7 @@
  */
 package grafica;
 
-import Test.SistemaBakaan;
+import test.SistemaBakaan;
 import javax.swing.JOptionPane;
 
 /**

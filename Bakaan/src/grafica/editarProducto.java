@@ -68,35 +68,35 @@ public class editarProducto extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(254, 250, 224));
 
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Editar producto- Bakaan ");
+        LB_Titulo.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        LB_Titulo.setForeground(new java.awt.Color(0, 51, 51));
+        LB_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Titulo.setText("Editar producto- Bakaan ");
 
-        jLabel3.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel3.setText("Seleccione el producto: ");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LB_SeleccioneProducto.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
+        LB_SeleccioneProducto.setForeground(new java.awt.Color(0, 51, 51));
+        LB_SeleccioneProducto.setText("Seleccione el producto: ");
+        LB_SeleccioneProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel5.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel5.setText("Nombre del producto: ");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LB_NombreProducto.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
+        LB_NombreProducto.setForeground(new java.awt.Color(0, 51, 51));
+        LB_NombreProducto.setText("Nombre del producto: ");
+        LB_NombreProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel4.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel4.setText("Precio del producto: ");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LB_PrecioProducto.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
+        LB_PrecioProducto.setForeground(new java.awt.Color(0, 51, 51));
+        LB_PrecioProducto.setText("Precio del producto: ");
+        LB_PrecioProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel6.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel6.setText("Cantidad disponible: ");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LB_CtdDispobible.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
+        LB_CtdDispobible.setForeground(new java.awt.Color(0, 51, 51));
+        LB_CtdDispobible.setText("Cantidad disponible: ");
+        LB_CtdDispobible.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel7.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel7.setText("Descripcion del producto:");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LB_DescProd.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
+        LB_DescProd.setForeground(new java.awt.Color(0, 51, 51));
+        LB_DescProd.setText("Descripcion del producto:");
+        LB_DescProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         comboProductos.setBackground(new java.awt.Color(255, 255, 255));
         comboProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -150,7 +150,7 @@ public class editarProducto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(LB_Titulo)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,10 +161,10 @@ public class editarProducto extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
+                                        .addComponent(LB_SeleccioneProducto)
+                                        .addComponent(LB_PrecioProducto))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                                        .addComponent(LB_CtdDispobible)
                                         .addGap(17, 17, 17)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,9 +190,9 @@ public class editarProducto extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addComponent(LB_Titulo)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -211,8 +211,13 @@ public class editarProducto extends javax.swing.JFrame {
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
+                        .addComponent(LB_DescProd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BTN_Guardar)
+                            .addComponent(BTN_Eliminar)
+                            .addComponent(BTN_Volver))
+                        .addGap(38, 38, 38))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -314,11 +319,6 @@ public class editarProducto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboProductos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField3;
