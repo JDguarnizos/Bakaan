@@ -11,8 +11,9 @@ public class Transacciones {
     public void registrarCompra (Pedido pedido, String metodoPago){
         pedido.procesarPago(metodoPago);
         listaTransacciones.add(pedido);
-        listaTransacciones.getLast().setIdPedido(listaTransacciones.size());
+        listaTransacciones.get(listaTransacciones.size() - 1).setIdPedido(listaTransacciones.size());
     }
+
 
     public ArrayList<Pedido> getListaTransacciones() {
         return listaTransacciones;
