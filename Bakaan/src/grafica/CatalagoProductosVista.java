@@ -17,7 +17,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
         
 
     }
-        // ✅ Constructor usado cuando se llama desde el programa
+        //Constructor usado cuando se llama desde el programa
     public CatalagoProductosVista(List<Producto> listaProductos, CarritoCompraVista carritoVista) {
         this.listaProductos = listaProductos;
         this.carritoVista = carritoVista;
@@ -54,25 +54,30 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
     }
 
      private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        int fila = tablaProductos.getSelectedRow();
+            int fila = tablaProductos.getSelectedRow();
+    
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un producto primero");
+        return;
+    }
+    
+    // Verificar que no sea la última fila (que podría ser un total)
+    if (fila >= listaProductos.size()) {
+        return;
+    }
+    
+    int idSeleccionado = (int) modeloTabla.getValueAt(fila, 0);
+    
+    Producto productoSeleccionado = listaProductos.stream()
+            .filter(p -> p.getIdProducto() == idSeleccionado)
+            .findFirst()
+            .orElse(null);
+    
+    if (productoSeleccionado != null && carritoVista != null) {
+        carritoVista.agregarProducto(productoSeleccionado);
+    }
+}
 
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un producto primero");
-            return;
-        }
-
-        int idSeleccionado = (int) modeloTabla.getValueAt(fila, 0);
-
-        Producto productoSeleccionado = listaProductos.stream()
-                .filter(p -> p.getIdProducto() == idSeleccionado)
-                .findFirst()
-                .orElse(null);
-
-        if (productoSeleccionado != null) {
-            carritoVista.agregarProducto(productoSeleccionado);
-            JOptionPane.showMessageDialog(this, "Producto añadido al carrito ✅");
-        }
-    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,7 +114,7 @@ public class CatalagoProductosVista extends javax.swing.JFrame {
 
         btnAgregarCarrito.setBackground(new java.awt.Color(249, 235, 199));
         btnAgregarCarrito.setForeground(new java.awt.Color(185, 148, 112));
-        btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Carrito 2.png"))); // NOI18N
+        btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Carrito 2.png"))); // NOI18N
         btnAgregarCarrito.setText("Añadir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

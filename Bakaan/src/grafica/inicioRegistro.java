@@ -4,6 +4,9 @@
  */
 package grafica;
 
+import Test.SistemaBakaan;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ValentinaVeraLozano
@@ -39,18 +42,27 @@ public class inicioRegistro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Pane_IniciarSesion.setBackground(new java.awt.Color(204, 255, 204));
+        Pane_IniciarSesion.setBackground(new java.awt.Color(254, 250, 224));
 
+        LB_InicioSesion.setFont(new java.awt.Font("MS UI Gothic", 1, 24)); // NOI18N
+        LB_InicioSesion.setForeground(new java.awt.Color(51, 51, 51));
+        LB_InicioSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LB_InicioSesion.setText("Iniciar Sesión");
 
         Field_Correo.setText("Ingresa tu correo");
 
-        PwdField_Contrasena.setText("Ingresa tu contraseña");
+        PwdField_Contrasena.setText("Contraseña");
 
+        LB_Correo.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        LB_Correo.setForeground(new java.awt.Color(51, 51, 51));
         LB_Correo.setText("Correo:");
 
+        LB_Contrasena.setBackground(new java.awt.Color(51, 51, 51));
+        LB_Contrasena.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        LB_Contrasena.setForeground(new java.awt.Color(51, 51, 51));
         LB_Contrasena.setText("Contraseña:");
 
+        BTN_IniciarSesion.setBackground(new java.awt.Color(120, 61, 25));
         BTN_IniciarSesion.setText("Iniciar Sesión");
         BTN_IniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,39 +74,40 @@ public class inicioRegistro extends javax.swing.JFrame {
         Pane_IniciarSesion.setLayout(Pane_IniciarSesionLayout);
         Pane_IniciarSesionLayout.setHorizontalGroup(
             Pane_IniciarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pane_IniciarSesionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BTN_IniciarSesion)
-                .addGap(142, 142, 142))
             .addGroup(Pane_IniciarSesionLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
                 .addGroup(Pane_IniciarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LB_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LB_Contrasena)
-                    .addGroup(Pane_IniciarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(PwdField_Contrasena)
-                        .addComponent(Field_Correo)
-                        .addGroup(Pane_IniciarSesionLayout.createSequentialGroup()
-                            .addComponent(LB_InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(16, 16, 16))))
-                .addContainerGap(131, Short.MAX_VALUE))
+                    .addGroup(Pane_IniciarSesionLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(BTN_IniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Pane_IniciarSesionLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(Pane_IniciarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LB_Contrasena)
+                            .addComponent(LB_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PwdField_Contrasena)
+                            .addComponent(Field_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pane_IniciarSesionLayout.createSequentialGroup()
+                .addGap(0, 87, Short.MAX_VALUE)
+                .addComponent(LB_InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
         Pane_IniciarSesionLayout.setVerticalGroup(
             Pane_IniciarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pane_IniciarSesionLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(LB_InicioSesion)
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(LB_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(LB_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LB_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(PwdField_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(BTN_IniciarSesion)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BTN_IniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,7 +131,18 @@ public class inicioRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_IniciarSesionActionPerformed
-        
+       String correo = Field_Correo.getText();
+    String contraseña = new String(PwdField_Contrasena.getPassword());
+    
+    SistemaBakaan sistema = SistemaBakaan.getInstance();
+    
+    if (sistema.iniciarSesion(correo, contraseña)) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+        sistema.mostrarInterfazSegunTipoUsuario();
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_BTN_IniciarSesionActionPerformed
 
     /**
