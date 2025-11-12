@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package grafica;
 
 import test.SistemaBakaan;
@@ -10,10 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import usuarios.Cliente;
 
-/**
- *
- * @author PC-PERSONAL
- */
+
 public class CarritoCompraVista extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private usuarios.Cliente clienteActual;
