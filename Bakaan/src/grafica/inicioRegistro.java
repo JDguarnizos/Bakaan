@@ -143,6 +143,8 @@ public class inicioRegistro extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
     } 
+  
+    
     }//GEN-LAST:event_BTN_IniciarSesionActionPerformed
 
     /**

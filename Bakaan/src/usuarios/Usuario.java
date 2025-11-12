@@ -7,7 +7,7 @@ public abstract class Usuario implements Autenticable {
     protected String idUsuario;
     protected String nombre;
     protected String correo;
-    private String contraseña;
+    protected String contraseña;
     protected String tipoUsuario;
     protected boolean sesionActiva;
     

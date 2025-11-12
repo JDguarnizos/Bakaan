@@ -1,18 +1,22 @@
 
 package grafica;
 
+import usuarios.Campesino;
+
 /**
  *
  * @author Carol
  */
 public class menuCampesino extends javax.swing.JFrame {
+    
+    private Campesino campesino;
 
-    /**
-     * Creates new form menuCampesino
-     */
     public menuCampesino() {
         initComponents();
         conectarBotones();
+    }
+    public void setCampesino(Campesino campesino) {
+         this.campesino = campesino;
     }
     
     private void conectarBotones() {
@@ -35,6 +39,7 @@ private void abrirVerVentas() {
 
 private void abrirEditarProducto() {
     editarProducto ventana = new editarProducto();
+    ventana.setCampesino(campesino);
     ventana.setVisible(true);
     this.dispose();
 }

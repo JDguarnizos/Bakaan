@@ -8,16 +8,19 @@ import funcionales.Producto; //Uso de la clase Producto para la lista de product
 public class Campesino extends Usuario implements Vendible {
 
     private String ubicacion;
-    public List<Producto> productos;
+    public List<Producto> productos = new ArrayList<>();
     public List<String> ventas; //Lista con informacion de ventas
+    
+    //Objeto campesino 
+    Campesino campesinoActual = new Campesino(
+    idUsuario, nombre, correo, contraseña, "Campesino", ubicacion);
 
     //Constructor campesino
     public Campesino(String idUsuario, String nombre, String correo, String contraseña, String tipoUsuario, String ubicacion) {
         super(idUsuario, nombre, correo, contraseña, tipoUsuario = "Campesino");
         this.ubicacion = ubicacion;
-        this.productos = new ArrayList<>();
         this.ventas = new ArrayList<>();
-   
+    
     }
     //Getters y Setters
 
