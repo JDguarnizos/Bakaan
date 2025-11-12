@@ -1,20 +1,54 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package grafica;
 
-/**
- *
- * @author Carol
- */
+import funcionales.Producto;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class verVentas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form verVentas
-     */
+    private DefaultTableModel modeloTabla;
+    private ArrayList<Producto> listaProductos; // lista con los productos del campesino
+
+    // Constructor por defecto (obligatorio para NetBeans)
     public verVentas() {
         initComponents();
+        this.listaProductos = new ArrayList<>(); // inicializa una lista vacía
+        configurarTabla();
+    }
+
+    public verVentas(ArrayList<Producto> listaProductos) {
+        initComponents();
+        this.listaProductos = listaProductos;
+        configurarTabla();
+        cargarVentas();
+    }
+
+    private void configurarTabla() {
+        // Definir las columnas del modelo
+        modeloTabla = new DefaultTableModel(
+                new Object[]{"Producto", "Cantidad Vendidos", "Comisión", "Cantidad Restante", "Total"},
+                0
+        );
+        // Asignar el modelo a la tabla de la interfaz
+        TB_ListaVentas.setModel(modeloTabla);
+    }
+
+    private void cargarVentas() {
+        // Limpiar la tabla antes de cargar
+        modeloTabla.setRowCount(0);
+
+        // Llenar con la información de los productos
+        for (Producto p : listaProductos) {
+            double total = p.getCantidadVendidas() * p.getPrecio();
+            modeloTabla.addRow(new Object[]{
+                p.getNombre(),
+                p.getCantidadVendidas(),
+                String.format("$%.2f", p.getComision()),
+                p.getCantidadDisponible(),
+                String.format("$%.2f", total)
+            });
+        }
     }
 
     /**
@@ -38,7 +72,6 @@ public class verVentas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(254, 250, 224));
 
-        TB_ListaVentas.setBackground(new java.awt.Color(255, 255, 255));
         TB_ListaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -61,11 +94,21 @@ public class verVentas extends javax.swing.JFrame {
         BTN_Actualizar.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
         BTN_Actualizar.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Actualizar.setText("Actualizar");
+        BTN_Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ActualizarActionPerformed(evt);
+            }
+        });
 
         BTN_Volver.setBackground(new java.awt.Color(120, 61, 25));
         BTN_Volver.setFont(new java.awt.Font("HP Simplified Jpan", 0, 14)); // NOI18N
         BTN_Volver.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Volver.setText("Volver");
+        BTN_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,7 +116,7 @@ public class verVentas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
@@ -82,9 +125,9 @@ public class verVentas extends javax.swing.JFrame {
                 .addComponent(BTN_Volver)
                 .addGap(73, 73, 73))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LB_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(98, 98, 98))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,6 +156,14 @@ public class verVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ActualizarActionPerformed
+        cargarVentas();
+    }//GEN-LAST:event_BTN_ActualizarActionPerformed
+
+    private void BTN_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BTN_VolverActionPerformed
 
     /**
      * @param args the command line arguments
